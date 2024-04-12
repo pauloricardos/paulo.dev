@@ -4,8 +4,17 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import { Analytics } from "@vercel/analytics/react";
+} from '@remix-run/react';
+import { Analytics } from '@vercel/analytics/react';
+import type { LinksFunction } from '@remix-run/node';
+
+import stylesheet from '~/globals.css?url';
+import '@fontsource/inter/400.css';
+// import '@fontsource/inter/latin.css';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
+];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +25,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-gray-dark-scale-900 h-screen">
         {children}
         <ScrollRestoration />
         <Scripts />
